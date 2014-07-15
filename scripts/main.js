@@ -11,7 +11,19 @@ function MapView() {
 }
 
 MapView.prototype.initMap = function() {
-	
+	this.map = new OpenLayers.Map('map', {
+			maxResolution: 360/512/16, 
+			numZoomLevels: 18,
+			units: 'm',
+			projection: new OpenLayers.Projection("EPSG:900913"),
+			displayProjection: new OpenLayers.Projection("EPSG:4326"),
+			controls: [ 
+					new OpenLayers.Control.Navigation(), 
+					new OpenLayers.Control.PanZoomBar(),
+					new OpenLayers.Control.Attribution(),
+					new OpenLayers.Control.LayerSwitcher(),
+					new OpenLayers.Control.MousePosition() ]
+				});
 };
 
 MapView.prototype.initStyles = function() {
